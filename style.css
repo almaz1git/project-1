@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --option-height: 400px;
+    --option-width: 60px;
+    --radius: 1.875rem;
+    --gutter: 10px;
+    --bg: #f5f5f5;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1f2020;
+    }
+  }
+  
+  body {
+    background-color: var(--bg);
+    min-width: 320px;
+  }
+  
+  .wrapper {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    min-width: 480px;
+    max-width: calc(var(--total-options) * 130px);
+    height: var(--option-height);
+    width: 100%;
+  }
+  
+  .option {
+    background-color: color-mix(in srgb, var(--bg), CanvasText 10%);
+    margin: var(--gutter);
+    flex-grow: 1;
+    border-radius: var(--radius);
+    flex: 0 0 var(--option-width);
+    transition: flex-grow 1.25s cubic-bezier(.17, .84, .44, 1);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .option:not(.active) {
+    cursor: pointer;
+  }
+  
+  .option.active {
+    flex-grow: var(--total-options);
+  }
+  
+  /* Уточнение: данный брейкпоинт для max-width является sm. */
+  /* max-width брейкпоинты имеют отступ (-0.02px), чтобы избежать перекрытия с min-width. */
+  @media (max-width: 767.98px) {
+    .options {
+      flex-direction: column;
+      min-height: 100vh;
+      min-width: auto;
+    }
+  }
+
+  /* Общие стили для секций */
+  section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
+  section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  section p, section ul {
+    font-size: 1rem;
+  }
+  
+  section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  section ul li {
+    margin: 5px 0;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  /* Навигация */
+  .navigation {
+    background-color: #008080;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navigation li {
+    margin: 0 15px;
+  }
+  
+  .navigation a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navigation a:hover {
+    color: #f0e68c;
+  }
